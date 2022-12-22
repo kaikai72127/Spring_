@@ -7,11 +7,31 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<!-- 第十章 掃描元件 自動化 -->
-	<context:annotation-config/>
-	<context:component-scan base-package="tw.leonchen"/>
+	<context:annotation-config />
+	<context:component-scan
+		base-package="tw.leonchen" />
+
+	<!-- 第12章 路徑寫完整就可以import API-->
+	<bean id="props"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location">
+			<value>classpath:tree.properties</value>
+		</property>
+	</bean>
 
 
+	<!-- 第11章 -->
+	<bean id="worker1" class="tw.leonchen.model.Worker">
+		<property name="id" value="101" />
+		<property name="name" value="minnie" />
+		<property name="title" value="manager" />
+	</bean>
 
+	<bean id="worker2" class="tw.leonchen.model.Worker">
+		<property name="id" value="102" />
+		<property name="name" value="henry" />
+		<property name="title" value="sales" />
+	</bean>
 
 	<bean id="truckBeanFactory"
 		class="tw.leonchen.model.TruckBeanFactory">
@@ -32,13 +52,15 @@
 			</map>
 		</property>
 	</bean>
-	
-	<bean id="bmwTruck" factory-bean="truckBeanFactory" factory-method="getTruckBean">
-	<constructor-arg value="5"/>
+
+	<bean id="bmwTruck" factory-bean="truckBeanFactory"
+		factory-method="getTruckBean">
+		<constructor-arg value="5" />
 	</bean>
 
-	<bean id="benzTruck" factory-bean="truckBeanFactory" factory-method="getTruckBean">
-	<constructor-arg value="6"/>
+	<bean id="benzTruck" factory-bean="truckBeanFactory"
+		factory-method="getTruckBean">
+		<constructor-arg value="6" />
 	</bean>
 
 
