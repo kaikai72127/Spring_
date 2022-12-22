@@ -98,7 +98,7 @@
 	</bean>
 
 	<!-- Room = new Room("1001,"war room","small"); -->
-	<bean id="room1" class="tw.leonchen.model.Room">
+	<bean id="room1" class="tw.leonchen.model.Room" scope="prototype">
 		<constructor-arg index="0" value="1001" />
 		<constructor-arg index="1" value="war room" />
 		<constructor-arg index="2" value="small" />
